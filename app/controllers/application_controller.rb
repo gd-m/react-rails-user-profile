@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::API
+    
     include ::ActionController::Cookies
+
 
     def login!
         session[:user_id] = @user.id        

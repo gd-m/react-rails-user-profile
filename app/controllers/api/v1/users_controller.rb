@@ -5,7 +5,7 @@ class Api::V1::UsersController < ApplicationController
             login!
             render json: {
                 logged_in: true,
-                user: @user
+                user: current_user
             }            
         else
             render json: {
