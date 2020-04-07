@@ -3,9 +3,10 @@ class Api::V1::UsersController < ApplicationController
         @user = User.new(users_param)
         if @user.save!
             login!
+            @user_json = UserSerializer.new(current_user)
             render json: {
                 logged_in: true,
-                user: current_user
+                user: @user_json
             }            
         else
             render json: {

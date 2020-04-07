@@ -4,9 +4,10 @@ class Api::V1::SessionsController < ApplicationController
         @user = User.find_by(email: params[:session][:email])
         if @user && @user.authenticate(params[:session][:password])
             login!
+            @user_json = UserSerializer.new(@user)
             render json: {
                 logged_in: true,
-                user: @user
+                user: @user_json
             }
         else
             render json: {

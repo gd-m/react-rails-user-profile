@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :profiles
   #signup
   post '/api/v1/signup', to: "api/v1/users#create" 
 
